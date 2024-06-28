@@ -1,0 +1,134 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.coming_soon_page {
+    min-height: 400px;
+    height: calc(100vh - 13rem);
+    max-height: 100%;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    @include mediaTo($size1200) {
+        height: calc(100vh - 8rem);
+    }
+
+    > .page_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        @include mediaTo($size600) {
+            justify-content: center;
+        }
+    }
+
+    .inner_soon {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 20px 0;
+        max-width: 790px;
+        @include mediaTo($size600) {
+            text-align: center;
+            align-items: center;
+        }
+    }
+
+    .page_description {
+        @include standardText;
+        color: $gray66;
+        margin-top: 24px;
+    }
+
+    .btn_coming {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 400px;
+        margin-top: 40px;
+        @include rowMargin;
+    }
+
+    .primary_btn,
+    .back_btn {
+        margin: 0 $colPadding;
+    }
+
+    .back_btn {
+        @include standardText;
+        color: $siteColor;
+        font-family: $semibold;
+        text-decoration: underline;
+    }
+
+    .socials_list {
+        @include standardRowList;
+        align-items: center;
+
+        li {
+            a {
+                display: block;
+                color: $gray66;
+                font-size: 0;
+                line-height: 0;
+                @include gridPadding;
+
+                &:before {
+                    display: block;
+                    font-size: 2.2rem;
+                }
+            }
+        }
+    }
+
+    .phone_block {
+        @include standardText;
+        padding-right: 30px;
+        color: $gray66;
+    }
+
+    .coming_soon_bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 40px;
+
+        @include mediaTo($size600) {
+            flex-direction: column;
+        }
+    }
+
+    .page_row {
+        align-items: center;
+    }
+
+    .app_block {
+        @include standardRowList;
+
+        a {
+            padding: 0 $colPadding;
+        }
+
+        @include mediaTo($size600) {
+            margin-top: 20px;
+        }
+    }
+}
+
+.web {
+    .coming_soon_page .phone_block,
+    .coming_soon_page .back_btn,
+    .socials_list a {
+        @include standardHover;
+    }
+}
+
+.touch {
+    .coming_soon_page .phone_block,
+    .coming_soon_page .back_btn,
+    .socials_list a {
+        @include standardActive;
+    }
+}

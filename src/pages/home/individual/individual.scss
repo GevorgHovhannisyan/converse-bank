@@ -1,0 +1,184 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+
+.blog_section {
+    display: flex;
+    flex-direction: column;
+
+    .blog_slider {
+        @include rowMargin;
+    }
+
+    .blog_block {
+        display: block;
+        @include overHidden;
+        border-radius: 10px;
+        @include gridMargin;
+    }
+
+    .blog_img {
+        @include proportional(62.5%);
+        display: block;
+    }
+
+    .blog_info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        padding: 20px;
+        z-index: 2;
+
+        &:before {
+            @include psevdoAbs;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            z-index: -1;
+            background: linear-gradient(180deg, rgba(51, 51, 51, 0) 0%, $black33 100%);
+        }
+    }
+
+    .blog_title {
+        @include standardText;
+        color: $white;
+        font-family: $medium;
+        @include textOverflow(3, relative);
+        margin-bottom: 12px;
+    }
+
+    .blog_date {
+        @include standardText;
+        color: $white;
+    }
+
+    .slick-arrow {
+        background: $white;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        border-radius: 50%;
+        z-index: 22;
+        @include iconFont;
+
+        &:before {
+            display: block;;
+            color: $siteColor;
+            font-size: 1.4rem;
+            opacity: 1;
+        }
+    }
+
+    .slick-prev {
+        left: -20px;
+
+        &:before {
+            content: "\e902";
+        }
+    }
+
+    .slick-next {
+        left: auto;
+        right: -20px;
+
+        &:before {
+            content: "\e903";
+        }
+    }
+
+    @include mediaTo($size1200) {
+        .slick-prev {
+            left: 0;
+        }
+        .slick-next {
+            right: 0;
+        }
+    }
+    @include mediaTo($size960) {
+        .blog_info {
+            padding: 20px 16px;
+        }
+        .slick-dots {
+            margin: 0;
+            list-style-type: none;
+            width: 100%;
+            position: relative;
+            text-align: center;
+            bottom: auto;
+            padding: 24px $containerPadding 0;
+            font-size: 0;
+
+            li {
+                margin: 0;
+                padding: 0;
+                width: auto;
+                height: auto;
+                vertical-align: top;
+                position: relative;
+
+                &:not(.slick-active) {
+                    cursor: pointer;
+                }
+
+                > button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 18px;
+                    height: 18px;
+                    @include animStyle(all 0.3s);
+
+                    &:before {
+                        display: block;
+                        content: "";
+                        width: 8px;
+                        height: 8px;
+                        position: relative;
+                        left: auto;
+                        top: auto;
+                        opacity: 1;
+                        border-radius: 50%;
+                        background: $grayE9;
+                        font-size: 0;
+                        line-height: 0;
+                    }
+                }
+
+                &.slick-active > button:before {
+                    width: 10px;
+                    min-width: 10px;
+                    height: 10px;
+                    background: $siteColor;
+                }
+            }
+        }
+
+
+    }
+
+}
+
+.web {
+    .blog_section .view_more {
+        @include standardHover;
+    }
+
+    .blog_section .blog_block {
+        @include opacityHover;
+    }
+}
+
+.touch {
+    .blog_section .view_more {
+        @include standardActive;
+    }
+
+    .blog_section .blog_block {
+        @include opacityActive;
+    }
+
+}

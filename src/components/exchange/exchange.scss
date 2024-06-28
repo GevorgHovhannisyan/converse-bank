@@ -1,0 +1,374 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.exchange_section {
+    margin-bottom: 60px;
+
+    .app_left {
+        @include gridPadding;
+        // @include standardCol(5);
+        margin-left: auto;
+
+        .page_row {
+            justify-content: center
+        }
+    }
+
+    .app_description {
+        @include standardText;
+        color: $black33;
+        margin: 10px 0 40px;
+    }
+
+    .section_title {
+        text-align: center;
+        margin-bottom: 38px;
+    }
+
+    @include mediaFrom($size960) {
+        .currency_block table th:first-child,
+        .currency_block table td:first-child {
+            padding-left: 70px;
+        }
+    }
+
+    .currency_block.last-selected {
+        .form_currency {
+            display: none;
+        }
+
+        .currency_content {
+            max-width: 591px;
+            margin: 0 auto;
+        }
+    }
+
+    .switch_btns {
+        max-width: 534px;
+        margin: 0 auto 22px;
+    }
+
+    .exchange_inner {
+        background: $white;
+        border: 1px solid $creamyF2;
+        border-radius: 20px;
+        padding: 0 $colPadding;
+    }
+
+    .currency_row {
+        @include standardRowList;
+        @include mediaTo($size960) {
+            align-items: flex-start;
+        }
+
+    }
+
+    .form_currency,
+    .currency_content {
+        @include standardCol(6);
+        @include mediaTo($size576) {
+            @include standardCol(12);
+        }
+    }
+
+    .currency_content {
+        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+        border-radius: 20px;
+        padding: 0;
+    }
+
+    .currency_block .switch_btns button {
+        text-align: center;
+    }
+
+    table tbody {
+        max-height: unset;
+
+        > tr {
+            display: none;
+        }
+
+        > tr:nth-child(-n + 4) {
+            display: flex;
+        }
+    }
+
+    .show-info {
+        tbody {
+            > tr {
+                display: flex;
+            }
+        }
+
+        .see_all {
+            &:before {
+                @include transStyle(scaleY(-1));
+            }
+        }
+    }
+
+    .currency_block .update_date {
+        padding: 0;
+        text-align: left;
+    }
+
+    .bottom_currency {
+        padding: 18px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include mediaTo($size960) {
+            padding: 18px 20px;
+        }
+    }
+
+    .see_all {
+        background: none;
+        border: none;
+        font-size: 140%;
+        line-height: 17px;
+        color: $siteColor;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        @include standardHover;
+        font-family: $medium;
+        @include mediaTo($size960) {
+            font-size: 0;
+            line-height: 0;
+        }
+
+        &:before {
+            padding-left: 10px;
+            font-size: 8px;
+        }
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+    .swap_section {
+        padding: 24px $colPadding 24px;
+        max-width: 526px;
+        margin: 0 auto;
+        width: 100%;
+        @include mediaTo($size960) {
+            max-width: 330px;
+            padding: 15px $colPadding*2 24px;
+        }
+        @include mediaTo($size576) {
+            padding: 30px 0;
+        }
+
+        .page_row {
+            margin: 0;
+        }
+
+        .update_date {
+            display: flex;
+            align-items: center;
+
+            &:before {
+                padding-right: 10px;
+                color: $siteColor;
+                font-size: 20px;
+                line-height: 1.4em;
+            }
+        }
+
+        .buttons_block {
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 40px;
+            display: flex;
+            @include mediaTo($size768){
+                flex-direction: column;
+                .clear_btn{
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+
+    .clear_btn {
+        background: none;
+        border: none;
+        //        margin: 40px 0 0;
+        padding: 0;
+        color: $siteColor;
+        font-size: 140%;
+        line-height: 17px;
+        font-family: $medium;
+        @include standardHover;
+    }
+
+    .currency_field {
+        flex: 1;
+        position: relative;
+        @include mediaTo($size960) {
+            @include colSize(12);
+        }
+    }
+
+    .select_block {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include mediaTo($size960) {
+            top: 17px;
+        }
+
+        > [class*="-container"] {
+            width: 80px;
+            min-width: 80px;
+            max-width: 80px;
+            margin-right: 10px;
+            font-size: 14px;
+            line-height: 17px;
+            font-family: $medium;
+
+        }
+
+        [class*="-singleValue"] {
+            color: $gray66;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+        }
+
+        .select__indicators {
+            display: none;
+        }
+
+        [class*="-IndicatorsContainer"] {
+            display: none;
+        }
+
+        [class*="-control"] {
+            border: none;
+            background-color: transparent !important;
+            border-color: transparent !important;
+            box-shadow: none !important;
+            @include iconFont;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row-reverse;
+            cursor: pointer;
+            @include opacityHover;
+
+            &:before {
+                font-size: 7px;
+                color: $siteColor;
+                content: "\e901";
+            }
+        }
+
+        .select__menu,
+        [class*="-menu"] {
+            border: none !important;
+            background: none !important;
+            border-radius: 10px;
+            margin-left: 10px;
+        }
+
+        .select__menu-list,
+        [class*="-MenuList"] {
+            max-height: 148px;
+            border: none !important;
+            background: $white;
+            border-radius: 10px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            @include customScroll(6px, thin, 3px, 3px, $fieldBorder, $siteColor);
+            padding: 0;
+
+            .select__option,
+            [class*="-option"] {
+                cursor: pointer !important;
+                font-size: 14px;
+                line-height: 17px;
+                color: $gray66;
+
+                &:hover {
+                    background: $calcBorder;
+                }
+            }
+
+            .select__option--is-selected,
+            [class*="is-selected "] {
+                background: $siteColor;
+                color: $white;
+                pointer-events: none;
+            }
+        }
+
+    }
+
+    .btn_exchange {
+        background: none;
+        border: none;
+        margin: 0;
+        padding: 0;
+        color: $siteColor;
+        font-size: 20px;
+        line-height: 23px;
+        @include standardHover;
+        @include mediaTo($size960) {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+        }
+
+        &:before {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+        }
+    }
+
+    .field_block {
+        width: 100%;
+        @include mediaTo($size960) {
+            margin-bottom: 10px;
+        }
+
+        .field_name {
+            font-size: 140%;
+            line-height: 17px;
+            color: rgba($black33, 0.8);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input {
+            background: $white;
+            border: 1px solid $fieldBorder;
+            border-radius: 10px;
+            height: 49px;
+            background: transparent;
+            font-size: 140%;
+            line-height: 17px;
+            color: $siteColor;
+            padding: 10px 24px;
+            padding-right: 74px;
+        }
+    }
+
+}

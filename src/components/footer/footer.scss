@@ -1,0 +1,434 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.footer {
+    background: $siteColor;
+    padding: 44px 0 40px;
+    color: $white;
+    overflow: hidden;
+
+    .top_footer {
+        display: flex;
+        flex-wrap: wrap;
+        @include rowMargin;
+    }
+
+    .developer {
+        font-size: 120%;
+        line-height: 15px;
+        color: $white;
+        margin-top: 7px;
+
+        a {
+            color: inherit;
+        }
+    }
+
+    &_menues {
+        @include colSize(9);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .menu_title {
+        font-size: 130%;
+        line-height: 20px;
+        font-family: $medium;
+        display: inline-block;
+        margin-bottom: 15px;
+        color: inherit;
+    }
+
+    &_about_menu {
+        @include gridPadding;
+        flex: 1;
+
+        .menu_list {
+            @include standardList;
+
+            li {
+                margin-bottom: 15px;
+                max-width: 232px;
+            }
+
+            a {
+                font-size: 130%;
+                line-height: 20px;
+                color: inherit;
+                display: inline-block;
+                vertical-align: top;
+            }
+        }
+    }
+
+    &_menu {
+        flex: 2;
+
+        .menu_list {
+            @include standardList;
+            @include colCount(2);
+
+            li {
+                margin-bottom: 15px;
+                display: inline-block;
+                vertical-align: top;
+                width: 100%;
+                max-width: 290px;
+                @include gridPadding;
+            }
+
+            a {
+                font-size: 130%;
+                line-height: 20px;
+                color: inherit;
+                display: inline-block;
+                vertical-align: top;
+                max-width: 232px;
+            }
+        }
+    }
+
+
+    .info_footer {
+        margin-top: 10px;
+        padding-top: 25px;
+        border-top: 1px solid rgba($white, 0.2);
+    }
+
+    .bottom_block {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .copyrights {
+        @include smallText;
+        margin-top: 28px;
+
+        a {
+            color: inherit;
+        }
+    }
+
+    &_description {
+        font-size: 120%;
+        line-height: 18px;
+    }
+
+    .finance_partners {
+        display: flex;
+        margin: 28px -14px 0;
+
+        a {
+            display: block;
+            margin: 0 10px;
+            @include opacityHover;
+
+            img {
+                height: 40px;
+                display: block;
+                width: auto;
+            }
+
+            @include mediaTo($size576) {
+                margin: 0 10px 15px;
+            }
+        }
+
+        @include mediaTo($size576) {
+            flex-wrap: wrap;
+        }
+    }
+
+    .subscribe_section {
+        @include standardCol(3);
+        margin-left: auto;
+
+        .footer_description {
+            padding-top: 6px;
+        }
+    }
+
+    .app_form {
+        margin: 12px 3px 0;
+        @include opacityHover;
+
+        img {
+            width: 100%;
+            display: block;
+            height: auto;
+            max-width: 90px;
+        }
+    }
+
+    .section_name {
+        font-size: 200%;
+        line-height: 1.5em;
+        display: flex;
+        align-items: center;
+        font-family: $medium;
+
+        img {
+            margin-right: 10px;
+            object-fit: cover;
+            max-width: 24px;
+            width: 100%;
+        }
+    }
+
+    .socials_list {
+        @include standardRowList;
+        align-items: center;
+        margin-top: 30px;
+
+        li {
+            a {
+                display: block;
+                color: inherit;
+                font-size: 0;
+                line-height: 0;
+                @include gridPadding;
+
+                &:before {
+                    display: block;
+                    font-size: 2.2rem;
+                }
+            }
+        }
+    }
+
+    .subscribe_form {
+        width: 100%;
+        position: relative;
+        margin-top: 10px;
+
+        label {
+            width: 100%;
+        }
+
+        .label {
+            font-size: 120%;
+            line-height: 15px;
+            display: block;
+            margin-bottom: 8px;
+            width: 100%;
+        }
+
+        .validate_btn {
+            font-size: 0;
+            background: $secondColor;
+            border-radius: 10px;
+            border: none;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            color: $white;
+
+            &:before {
+                font-size: 1.5rem;
+                display: block;
+            }
+
+            &.loading:after {
+                @include transStyle(scale(0.6));
+                margin-left: -10px;
+            }
+        }
+
+        input {
+            height: 40px;
+            width: 100%;
+            border: 1px solid $white;
+            border-radius: 10px;
+            background: transparent;
+            padding: 7px 57px 7px 15px;
+            color: $white;
+            font-size: 140%;
+            line-height: 18px;
+
+            &::placeholder {
+                color: #ffffff;
+                font-size: 85%;
+            }
+        }
+    }
+
+    .field_inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        position: relative;
+    }
+
+    .scroll_top_btn {
+        position: fixed;
+        display: flex;
+        padding: 12px 18px;
+        align-items: center;
+        bottom: 100px;
+        right: 10px;
+        color: $gray66;
+        border: 1px solid #F2F2F2;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.05), 0px 4px 8px rgba(0, 0, 0, 0.04);
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 10;
+        background: #ffffff;
+
+        @include standardText();
+
+        .icon_arrow_down {
+            display: block;
+            @include transStyle(scaleY(-1));
+            padding-left: 8px;
+            display: flex;
+        }
+    }
+
+    @include mediaRange($size768, $size1200) {
+        padding-top: 48px;
+
+        &_menues {
+            @include colSize(8);
+        }
+
+        .subscribe_section {
+            @include colSize(4);
+        }
+
+        .finance_partners {
+            margin-left: -10px;
+            margin-right: -10px;
+
+            a {
+                margin-left: 10px;
+                margin-right: 10px;
+
+                img {
+                    height: 44px;
+                }
+            }
+
+        }
+    }
+
+    @include mediaRange($size576, $size1200) {
+        &_about_menu {
+            @include colSize(6);
+        }
+
+        &_menu {
+            @include colSize(6);
+
+            .menu_list {
+                @include colCount(1);
+            }
+        }
+    }
+
+    @include mediaTo($size768) {
+        padding-top: 40px;
+
+        &_menues {
+            @include colSize(12);
+        }
+
+        .subscribe_section {
+            @include colSize(12);
+
+            &:before {
+                display: block;
+                content: "";
+                border-top: 1px solid rgba($white, 0.2);
+                margin-bottom: 20px;
+            }
+        }
+
+        .info_footer {
+            padding-top: 20px;
+        }
+
+        .info_inner {
+            padding: 20px 0;
+        }
+
+        .finance_partners {
+            margin-left: -8px;
+            margin-right: -8px;
+            margin-top: 20px;
+
+            a {
+                margin-left: 8px;
+                margin-right: 8px;
+
+                img {
+                    height: 40px;
+                }
+            }
+        }
+
+        .subscribe_form,
+        .socials_list,
+        .copyrights {
+            margin-top: 20px;
+        }
+    }
+
+    @include mediaTo($size576) {
+        &_about_menu {
+            @include colSize(12);
+
+        }
+
+        &_menu {
+            @include colSize(12);
+
+            .menu_list {
+                @include colCount(1);
+            }
+
+            &:before {
+                display: block;
+                content: "";
+                border-top: 1px solid rgba($white, 0.2);
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+.web .footer {
+
+    .developer a,
+    .copyrights a,
+    .menu_title,
+    .footer_menu .menu_list a,
+    .footer_about_menu .menu_list a,
+    .socials_list a {
+        @include standardHover;
+    }
+
+    .subscribe_form .validate_btn {
+        @include standardBgHover;
+    }
+}
+
+.touch .footer {
+
+    .developer a,
+    .copyrights a,
+    .menu_title,
+    .footer_menu .menu_list a,
+    .footer_about_menu .menu_list a,
+    .socials_list a {
+        @include standardActive;
+    }
+
+    .subscribe_form .validate_btn {
+        @include standardBgActive;
+    }
+}

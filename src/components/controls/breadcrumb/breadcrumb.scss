@@ -1,0 +1,64 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+
+.breadcrumbs {
+    padding: 0 0 5px;
+    position: relative;
+    z-index: 1;
+    margin: 0 $rowMargin*2 30px;
+    @include mediaTo($size960) {
+        display: none;
+    }
+
+    ul {
+        @include standardList;
+        display: flex;
+        font-size: 120%;
+        line-height: 15px;
+        align-items: center;
+        color: $siteColor;
+    }
+
+    li {
+        display: flex;
+        align-items: center;
+
+        a,
+        div {
+            display: block;
+            max-width: 400px;
+            white-space: nowrap;
+            @include overHidden;
+            text-overflow: ellipsis;
+
+        }
+
+        &:not(:first-child):before {
+            margin: 0 7px;
+            content: "/";
+            color: $gray99;
+        }
+    }
+
+    a {
+        color: $gray66;
+        @include siteColorHover;
+    }
+
+    @include mediaTo($size768) {
+        li {
+            &:nth-child(n+2):not(:nth-last-child(-n+2)) {
+                display: none;
+
+            }
+
+            &:first-child:nth-last-child(n+4) {
+                &:after {
+                    margin: 0 3px;
+                    content: '/ ...';
+                    display: block;
+                }
+            }
+        }
+    }
+}

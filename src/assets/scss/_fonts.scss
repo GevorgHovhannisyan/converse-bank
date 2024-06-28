@@ -1,0 +1,200 @@
+@font-face {
+    font-family: 'montserrat';
+    font-display: swap;
+    src: url('../fonts/Montserrat-Regular/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Montserrat-Regular/Montserrat-Regular.otf') format('opentype'),
+    url('../fonts/Montserrat-Regular/Montserrat-Regular.woff') format('woff'),
+    url('../fonts/Montserrat-Regular/Montserrat-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratarm';
+    font-display: swap;
+    src: url('../fonts/Montserratarm-Regular/Montserratarm-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Montserratarm-Regular/Montserratarm-Regular.otf') format('opentype'),
+    url('../fonts/Montserratarm-Regular/Montserratarm-Regular.woff') format('woff'),
+    url('../fonts/Montserratarm-Regular/Montserratarm-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserrat-medium';
+    font-display: swap;
+    src: url('../fonts/Montserrat-Medium/Montserrat-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Montserrat-Medium/Montserrat-Medium.otf') format('opentype'),
+    url('../fonts/Montserrat-Medium/Montserrat-Medium.woff') format('woff'),
+    url('../fonts/Montserrat-Medium/Montserrat-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratarm-medium';
+    font-display: swap;
+    src: url('../fonts/Montserratarm-Medium/Montserratarm-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Montserratarm-Medium/Montserratarm-Medium.otf') format('opentype'),
+    url('../fonts/Montserratarm-Medium/Montserratarm-Medium.woff') format('woff'),
+    url('../fonts/Montserratarm-Medium/Montserratarm-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserrat-semibold';
+    font-display: swap;
+    src: url('../fonts/Montserrat-SemiBold/Montserrat-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Montserrat-SemiBold/Montserrat-SemiBold.otf') format('opentype'),
+    url('../fonts/Montserrat-SemiBold/Montserrat-SemiBold.woff') format('woff'),
+    url('../fonts/Montserrat-SemiBold/Montserrat-SemiBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratarm-light';
+    font-display: swap;
+    src: url('../fonts/Montserratarm-Light/Montserratarm-Light.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Montserratarm-Light/Montserratarm-Light.otf') format('opentype'),
+    url('../fonts/Montserratarm-Light/Montserratarm-Light.woff') format('woff'),
+    url('../fonts/Montserratarm-Light/Montserratarm-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'icon';
+    font-display: 'auto';
+    src: url('../fonts/icons/icomoon.eot?4a071s');
+    src: url('../fonts/icons/icomoon.eot?4a071s#iefix') format('embedded-opentype'),
+    url('../fonts/icons/icomoon.ttf?4a071s') format('truetype'),
+    url('../fonts/icons/icomoon.woff?4a071s') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class*="icon_"] {
+    @include iconFont;
+}
+
+.icon_facebook:before {
+    content: "\e90a";
+}
+
+.icon_twitter:before {
+    content: "\e90b";
+}
+
+.icon_instagram:before {
+    content: "\e90c";
+}
+
+.icon_linkedIn:before {
+    content: "\e90d";
+}
+
+.icon_youTube:before {
+    content: "\e90e";
+}
+
+.icon_vk:before {
+    content: "\e90f";
+}
+
+.icon_tw_share:before {
+    content: "\e917";
+}
+
+.icon_pt_share:before {
+    content: "\e918";
+}
+
+.icon_in_share:before {
+    content: "\e919";
+}
+
+.icon_fb_share:before {
+    content: "\e91a";
+}
+
+.icon_down:before {
+    content: "\e901";
+}
+
+.icon_left:before {
+    content: "\e902";
+}
+
+.icon_right:before {
+    content: "\e903";
+}
+
+.icon_close:before {
+    content: "\e904";
+}
+
+.icon_checked:before {
+    content: "\e905";
+}
+
+.icon_info:before {
+    content: "\e906";
+}
+
+.icon_favorite:before {
+    content: "\e907";
+}
+
+.icon_globe:before {
+    content: "\e908";
+}
+
+.icon_arrow_down:before {
+    content: "\e900";
+}
+
+.icon_arrow_right:before {
+    content: "\e909";
+}
+
+.icon_live:before {
+    content: "\e910";
+}
+
+.icon_quote:before {
+    content: "\e911";
+}
+
+.icon_location:before {
+    content: "\e912";
+}
+
+.icon_search:before {
+    content: "\e913";
+}
+
+.icon_services:before {
+    content: "\e914";
+}
+
+.icon_download:before {
+    content: "\e915";
+}
+
+.icon_info_calc:before {
+    content: "\e916";
+}
+
+.icon_telegram:before {
+    content: "\e91b";
+}
+
+.icon_exchange:before {
+    content: "\e91c";
+}
+
+.icon_play:before {
+    content: "\e929";
+}

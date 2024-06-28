@@ -1,0 +1,114 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.app_section {
+    // margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+
+    .app_inner {
+        @include standardRowList;
+        align-items: center;
+        padding-bottom: 73px;
+        @include mediaTo($size960) {
+            justify-content: space-between;
+        }
+        @include mediaTo($size768) {
+            justify-content: center;
+        }
+    }
+
+    .app_left {
+        @include gridPadding;
+        @include standardCol(5);
+        margin-left: auto;
+    }
+
+    .app_right {
+        @include gridPadding;
+        @include standardCol(5);
+        // &:before{
+        //     content: "";
+        //     background: $siteColor;
+        //     position: absolute;
+        //     height: 670px;
+        //     right: 0;
+        //     border-radius: 100% 0 0;
+        //     z-index: -1;
+        //     width: 580px;
+        // }
+
+        // &:after{
+        //     content: "";
+        //     background: $secondColor;
+        //     position: absolute;
+        //     height: 100%;
+        //     right: -60px;
+        //     border-radius: 55%;
+        //     z-index: -1;
+        //     width: 537px;
+        //     bottom: -62%;
+        // }
+    }
+
+    .app_form {
+       // @include gridPadding;
+        display: block;
+    }
+
+    .img_mobile {
+        flex: 1;
+        max-width: 301px;
+        position: relative;
+        margin-top: 40px;
+        padding-top: 63px;
+        @include mediaTo($size960) {
+            width: 100%;
+            max-width: unset;
+            margin-top: 0;
+        }
+
+        img {
+            display: block;
+            height: auto;
+            width: auto;
+            max-width: 370px;
+            @include mediaTo($size960) {
+                width: 100%;
+                max-width: unset;
+            }
+        }
+    }
+
+    .app_description {
+        @include standardText;
+        color: $black33;
+        margin: 10px 0 40px;
+    }
+
+    @include mediaTo($size960) {
+        .app_left {
+            margin-left: 0
+        }
+    }
+
+    @include mediaTo($size768) {
+        .app_left {
+            @include colSize(12);
+            padding-top: 40px;
+        }
+    }
+}
+
+.web {
+    .app_form {
+        @include opacityHover;
+    }
+
+}
+
+.touch {
+    .app_form {
+        @include opacityActive;
+    }
+}

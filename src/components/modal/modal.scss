@@ -1,0 +1,70 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.popup_wrapper {
+    @include popupBackLayer;
+    .popup_block {
+        @include popupBlock(0.5s);
+    }
+    .popup_inner {
+        @include popupInner(20px $mobileContainerPadding);
+    }
+    .popup_container {
+        @include popupContainer($white, 460px, 40px);
+        border-radius: 20px;
+    }
+    .popup_close {
+        border: none;
+        background: transparent;
+        padding: 4px;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        color: $gray99;
+        @include standardHover;
+        font-size: 160%;
+        &:before {
+            display: block;
+        } 
+    }
+    .popup_title {
+        font-size: 180%;
+        line-height: 1.5em;
+        font-family: $medium;
+        margin-bottom: 18px;
+    }
+    .popup_description {
+        @include standardText;
+        color: $gray66;
+        margin-bottom: 32px;
+    }
+    .btn_block {
+        padding-top: 4px;
+    }
+    .primary_btn {
+        width: 100%;
+    }
+
+    @include mediaRange($size480, $size960) {
+        .popup_container {
+            padding: 40px 24px 32px;
+            max-width: 440px;
+        }
+    }
+
+    @include mediaTo($size480) {
+        .popup_container {
+            padding: 40px 16px 24px;
+            max-width: 420px
+        }
+    }
+    &.showed {
+        @include showedPopupBackLayer;
+        .popup_block {
+            top: 0;
+            overflow-y: auto;
+            @include animDelay(0.3s);
+        }
+    }
+}
+

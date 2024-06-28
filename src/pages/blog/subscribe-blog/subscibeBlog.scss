@@ -1,0 +1,160 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+
+.subscribe_blog_section {
+    background: $calcBorder;
+   //min-height: 460px;
+   //margin-top: 50px;
+   //display: flex;
+   //align-items: flex-end;
+   //position: relative;
+   //overflow: hidden;
+
+    @include mediaTo($size960) {
+        margin-top: 40px;
+    }
+
+    .page_row {
+        align-items: center;
+    }
+
+
+    .blog_left {
+        @include colSize(6);
+        @include gridPadding;
+        padding-top: $colPadding*2;
+        padding-bottom: $colPadding*2;
+        margin-left: 0;
+    }
+
+    .blog_right {
+        @include colSize(4);
+        @include gridPadding;
+
+        &:before {
+            content: "";
+            background: $siteColor;
+            position: absolute;
+            height: 670px;
+            right: 0;
+            border-radius: 100% 0 0;
+            width: 550px;
+            @include mediaTo($size768) {
+                width: 447px;
+            }
+        }
+
+        &:after {
+            content: "";
+            background: $secondColor;
+            position: absolute;
+            height: 100%;
+            right: -60px;
+            border-radius: 55%;
+            width: 500px;
+            bottom: -62%;
+        }
+    }
+
+    .blog_img_right {
+        flex: 1;
+        max-width: 301px;
+        position: relative;
+        margin-top: 40px;
+        padding-top: 63px;
+        z-index: 1;
+
+        img {
+            display: block;
+            height: auto;
+            width: auto;
+            max-width: 370px;
+            @include mediaTo($size480) {
+                max-width: 275px;
+            }
+        }
+    }
+
+
+    .blog_description {
+        @include standardText;
+        color: $gray66;
+        margin: 25px 0;
+    }
+
+
+    .field_inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        position: relative;
+    }
+
+    .subscribe_form {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        position: relative;
+        margin-top: 27px;
+        max-width: 382px;
+
+        .field_block,
+        label {
+            width: 100%;
+        }
+
+        .label {
+            font-size: 120%;
+            line-height: 15px;
+            color: $black33;
+            display: block;
+            margin-bottom: 8px;
+            width: 100%;
+        }
+
+        .validate_btn {
+            font-size: 0;
+            background: $secondColor;
+            border-radius: 10px;
+            border: none;
+            width: 41px;
+            height: 41px;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            @include siteBgAlfaHover;
+
+            &:before {
+                font-size: 1.5rem;
+                color: $white;
+            }
+        }
+
+        input {
+            height: 41px;
+            width: 100%;
+            border: 1px solid $white;
+            border-radius: 10px;
+            background: $white;
+            padding: 7px 57px 7px 15px;
+            color: $black33;
+            font-size: 140%;
+            line-height: 18px;
+        }
+    }
+
+    @include mediaTo($size960+130) {
+        .blog_left {
+            margin-left: 0;
+        }
+    }
+
+    @include mediaTo($size768+130) {
+        .blog_left {
+            @include colSize(12);
+            padding-top: 40px;
+            margin-left: 0;
+        }
+    }
+}
+

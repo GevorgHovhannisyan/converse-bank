@@ -1,0 +1,95 @@
+image: node:16-alpine
+
+stages:
+  - check
+  - build
+  - deployment
+
+cache:
+  paths:
+    - node_modules/
+
+check:
+  stage: check
+  environment:
+    name: ${CI_COMMIT_BRANCH}
+  except:
+    - main
+    - qa
+    - development 
+  script:
+    - export
+    - npm install --force
+    - CI=false npm run build
+checkdeploy:
+  stage: check
+  environment:
+    name: ${CI_COMMIT_BRANCH}
+  only:
+    - main
+    - qa
+    - development 
+  script:
+    - export
+build:
+  stage: build
+  environment:
+    name: ${CI_COMMIT_BRANCH}
+  only:
+    - main
+    - qa
+    - development  
+  before_script:
+     - apk add --update curl    
+     - "curl --location --request GET \"${REACT_APP_API_URL}/translations\"  --header 'Accept-Language: en' -o src/translations/locales/en.json"
+     - "curl --location --request GET \"${REACT_APP_API_URL}/translations\"  --header 'Accept-Language: hy' -o src/translations/locales/am.json"
+     - "curl --location --request GET \"${REACT_APP_API_URL}/translations\"  --header 'Accept-Language: ru' -o src/translations/locales/ru.json"
+     - "curl --location --request GET \"${REACT_APP_API_URL}/settings\" --header 'Accept-Language: ru' -o src/settings/settings.json"
+  script:
+    - npm install --force
+    - CI=false npm run build
+  artifacts:
+    paths:
+      - build/
+    expire_in: 1 hours
+
+deply:
+    stage: deployment
+    environment:
+      name: ${CI_COMMIT_BRANCH}
+    only:
+     - main
+     - qa
+     - development
+    before_script:
+     - apk add --update openssh rsync curl
+     - eval $(ssh-agent -s)
+     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+     - mkdir -p ~/.ssh
+     - chmod 700 ~/.ssh
+
+    script:
+     - rsync -avzuh --no-perms --no-owner --no-group -e "ssh -p ${SSH_PORT} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress ${CI_PROJECT_DIR}/build/ ${SSH_USER}@${SSH_HOST}:${SSH_PATH} --exclude '.git' --exclude '.gitlab-ci.yml'
+deplyprod:
+    stage: deployment
+    environment:
+      name: ${CI_COMMIT_BRANCH}
+    only:
+     - Production
+    before_script:
+     - apk add --update openssh git
+     - eval $(ssh-agent -s)
+     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+     - mkdir -p ~/.ssh
+     - chmod 700 ~/.ssh
+     - git config --global user.email "web@studio-one.am"
+     - git config --global user.name "Gtilab Runner"
+    script:
+      - branch_name=`date +"%Y_%m_%d-%H_%M"`
+      - echo ${branch_name}
+      - GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git remote rm originconvers
+      - GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git remote add originconvers git@ssh.dev.azure.com:v3/c-digital/ConverseBankWebsite/Frontend
+      - GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git checkout -b "Production-${branch_name}"
+      - GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git commit -m "Deply to Production environment" || echo "No changes, nothing to commit!"
+      - GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git push originconvers  "Production-${branch_name}"
+      - GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git remote rm originconvers

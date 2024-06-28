@@ -1,0 +1,34 @@
+.menu_sub {
+    z-index: 9999;
+    position: absolute;
+    background-color: aliceblue;
+    padding: 30px;
+
+}
+
+.menu_sub_1 {
+    position: absolute;
+    background-color: rgba(155, 155, 155);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+    
+
+}
+.menu_sub_2 {
+    z-index: 9999;
+    position: absolute;
+    background-color: rgb(252, 255, 251);
+    padding: 30px;
+    margin-left: 50px;
+
+
+}
+
+
+
+/* .menu_sub_hidden {
+    display: none;
+
+} */

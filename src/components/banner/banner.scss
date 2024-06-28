@@ -1,0 +1,92 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.banner_block {
+    position: relative;
+    .home_banner_inner{
+        position: relative;
+        margin-bottom: 70px;
+
+        .banner_img{
+            min-height: 300px;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            padding: 20px;
+            img {
+                @include coverLayer;
+                object-fit: cover;
+            }
+            &:before{
+              content: "";
+                @include coverLayer;
+                background: rgba($gray66,0.8);
+                z-index: 1;
+            }
+        }
+
+        .banner_info{
+            @include coverLayer;
+            padding: 0 64px;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .section_title { 
+            color: $white;
+            max-width: 540px;
+            @include textOverflow(2, relative);
+        }
+        .banner_description{
+            @include standardText;
+            max-width: 540px;
+            color: $white;
+            @include textOverflow(3, relative);
+            margin-top: 16px;
+            p{
+                margin: 0;
+                padding: 0;
+                @include textOverflow(3, relative);
+            }
+        }
+        .primary_btn{
+            align-self: flex-start;
+            margin-top: 24px;
+        }
+    }
+    @include mediaRange($size960, $size1200) {
+        .home_banner_inner {
+            .banner_info {
+                padding: 0 48px;
+            }
+        }
+        
+    }
+    @include mediaRange($size576, $size960) {
+        margin-bottom: 60px;
+        .home_banner_inner {
+            .banner_info {
+                padding: 0 32px;
+            }
+            .banner_img {
+                border-radius: 16px;
+                min-height: 270px;
+            }
+        }
+    }
+    @include mediaTo($size576) {
+        margin-bottom: 40px;
+        .home_banner_inner {
+            .banner_info {
+                padding: 0 16px;
+            }
+            .banner_img {
+                border-radius: 12px;
+                min-height: 240px;
+            }
+        }
+    }
+}

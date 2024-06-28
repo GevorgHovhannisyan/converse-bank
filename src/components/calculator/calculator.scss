@@ -1,0 +1,722 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.calc_section {
+    margin-top: 130px;
+
+.nodata_hint{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    &::before{
+        content: "";
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        background: $white;
+        opacity: 0.9;
+        border-radius: 10px;
+        z-index: 2;
+        
+    }
+    span{
+        @include subtitleSize;
+        font-family: $medium;
+        position: relative;
+        z-index: 3;
+        padding: 0 15px;
+        text-align: center;
+
+    }
+}
+    .section_title {
+        text-align: center;
+    }
+
+    .section_inner {
+        margin-top: 24px;
+        border: 1px solid $creamyF2;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .calc_options {
+        @include customCol(7, 534px + 2 * 56, 56px);
+        margin: 44px 0;
+        border-radius: inherit;
+
+    }
+
+    .calc_results {
+        @include colSize(5);
+        background: $white;
+        border: 1px solid $creamyF2;
+        margin: -1px -1px -1px 0;
+        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+        border-radius: inherit;
+        padding: 44px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+    }
+
+    .results_title {
+        @include subtitleSize;
+        font-family: $medium;
+        //        margin-bottom: 27px;
+    }
+
+    .calc-options {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        padding: 44px 56px;
+    }
+
+    .type_btns {
+        border-bottom: 1px solid $calcBorder;
+        display: flex;
+        margin-bottom: 28px;
+
+        button {
+            flex: 1;
+            border: none;
+            padding: 0 0 16px;
+            text-align: left;
+            @include standardText;
+            color: $gray66;
+            background: transparent;
+            margin-bottom: -1px;
+            border-bottom: 1px solid transparent;
+
+            &.selected {
+                color: $siteColor;
+                border-bottom-color: $siteColor;
+                pointer-events: none;
+            }
+
+            &:not(:first-child) {
+                margin-left: 24px;
+            }
+        }
+    }
+
+    .options_title {
+        @include standardText;
+    }
+
+    .currency_options {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 7px;
+
+        .options_list {
+            display: flex;
+            align-items: center;
+            background: $calcBorder;
+            border-radius: 10px;
+
+            button {
+                background: none;
+                border: 1px solid transparent;
+                padding: 4px;
+                font-size: 160%;
+                line-height: 1.4em;
+                border-radius: 10px;
+                min-width: 28px;
+                height: 28px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &:not(:first-child) {
+                    margin-left: 4px;
+                }
+
+                &.selected {
+                    background: $white;
+                    border-color: $siteColor;
+                    color: $siteColor;
+                    pointer-events: none;
+                }
+
+                &:disabled:not(.selected) {
+                    pointer-events: none;
+                    opacity: 0.5;
+                    color: $textColor;
+                }
+            }
+        }
+    }
+
+    .duration_options {
+        .options_list {
+            margin: 0 -5px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: none;
+            background: $calcBorder;
+            border-radius: 19px;
+            @include standardNarrow;
+            color: $black33;
+            justify-content: center;
+            padding: 9px 19px;
+            margin: 10px 5px 0;
+            border: 1px solid transparent;
+
+            &.selected {
+                color: $siteColor;
+                background: $white;
+                border-color: $siteColor;
+                pointer-events: none;
+            }
+
+            &:disabled:not(.selected) {
+                color: $textColor;
+                pointer-events: none;
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .amount_block {
+        margin-bottom: 24px;
+    }
+
+    .amount_size {
+        display: block;
+        position: relative;
+    }
+
+    .showed_amount {
+        position: absolute;
+        pointer-events: none;
+        left: 19px;
+        top: 19px;
+        @include standardText;
+        font-family: $semibold;
+
+        .showed_size {
+            visibility: hidden;
+        }
+    }
+
+    #amount-number {
+        background: $white;
+        border: 1px solid $fieldBorder;
+        border-radius: 10px 10px 0 0;
+        height: 59px;
+        width: 100%;
+        @include standardText;
+        font-family: $semibold;
+        color: $black33;
+        padding: 7px 18px;
+    }
+
+    .rc-slider-track{
+        margin-top: -8px;
+        background: $siteColor;
+        @include animStyle(all 0.15s linear);
+
+    }
+
+    .rc-slider-handle-dragging {
+        background-color: $siteColor;
+        box-shadow: none !important;
+        border-color: white !important;
+    }
+    .rc-slider-handle {
+        margin-top: -15px !important;
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        background: $siteColor;
+        box-shadow:  0 0 2px rgb(0 0 0 / 15%);;
+        border: 4px solid $white;
+        outline: 1px solid $creamyF8;
+        outline-offset: -1px;
+        opacity: 1;
+        @include animStyle(all 0.15s linear);
+
+        &[data-lower] {
+            width: 0;
+            visibility: hidden;
+        }
+        &:hover {
+            background-color: $siteColor;
+            box-shadow: none;
+            border-color: white;
+        }
+
+    }
+    .rc-slider .rc-slider-rail {
+        margin-top: -8px;
+
+        height: 4px;
+        background: $fieldBorder;
+        border-radius: 0;
+        z-index: 0;
+
+    }
+
+    .range_hints {
+        margin-top: 8px;
+        display: flex;
+
+        >span {
+            display: block;
+            flex: 2;
+            text-align: center;
+            @include smallText;
+            color: $gray66;
+
+            &:first-child,
+            &:last-child {
+                flex: 1;
+            }
+
+            &:first-child {
+                text-align: left;
+            }
+
+            &:last-child {
+                text-align: right;
+            }
+        }
+    }
+
+    .switch_btns {
+        margin-top: 28px;
+
+        .switch_check {
+            &:not(:first-child) {
+                margin-top: 16px;
+            }
+        }
+    }
+
+    .actions_block {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px;
+        @include rowMargin;
+
+        .see_btn {
+            @include secondaryLight;
+            @include smallBtn;
+            @include gridMargin;
+            white-space: nowrap;
+        }
+
+        .primary_btn {
+            @include gridMargin;
+            margin-left: auto !important;
+        }
+    }
+
+    .results_list {
+        @include standardList;
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid $grayF5;
+            padding: 19px 0;
+
+            span {
+                @include colSize(6);
+            }
+
+            &:nth-child(3) {
+                span:last-child {
+                    @include iconFont;
+                    display: flex;
+                    align-items: center;
+                    justify-content: end;
+                    flex-direction: row-reverse;
+                    margin: 0 $rowMargin;
+
+                }
+            }
+
+            >span {
+                &:first-child {
+                    @include standardText;
+                    color: $gray66;
+                    padding-right: $mobileColPadding;
+                }
+
+                &:last-child {
+                    font-family: $semibold;
+                    @include subtitleSize;
+                    padding-left: 10px;
+                    text-align: right;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+
+    @include mediaRange($size960, $size1200) {
+        margin-top: 120px;
+
+        .calc_options {
+            margin: 32px 0;
+            padding: 0 32px;
+        }
+
+        .calc_results {
+            padding: 32px;
+        }
+    }
+
+    @include mediaTo($size960) {
+        margin-top: 30px;
+
+        .calc_options {
+            margin: 20px 0;
+            padding: 0 16px;
+        }
+
+        .calc_results {
+            padding: 20px 16px;
+        }
+
+        .type_btns {
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+
+            button {
+                padding: 6px 0;
+                border: none;
+
+                &:not(:first-child) {
+                    margin-left: 0;
+                }
+
+                &.selected {
+                    font-family: $medium;
+                }
+            }
+        }
+
+        .results_list li {
+            padding: 16px 0;
+
+            >span {
+                @include colSize(6);
+            }
+        }
+
+        .actions_block {
+            flex-direction: column;
+
+            .primary_btn {
+                margin-right: auto;
+            }
+        }
+
+        .results_title {
+            margin-bottom: 20px;
+        }
+
+        .make_btn {
+            margin-top: 10px;
+        }
+    }
+
+    @include mediaRange($size640, $size1200) {
+
+        .calc_options,
+        .calc_results {
+            @include colSize(6);
+        }
+    }
+
+    @include mediaTo($size640) {
+        .section_inner {
+            flex-wrap: wrap;
+        }
+
+        .calc_options,
+        .calc_results {
+            @include colSize(12);
+        }
+    }
+
+    //Tooltip text container
+
+    .tooltip_block {
+        position: relative;
+        font-family: $regular;
+
+        .tooltip_info {
+            position: absolute;
+            opacity: 0;
+            bottom: 100%;
+            margin-bottom: 5px;
+            right: -30px;
+            background: $white;
+            border: 2px solid rgba(217, 217, 217, 0.5);
+            box-shadow: 0px 12px 48px rgba(0, 0, 0, 0.1), 0px 8px 20px rgba(0, 0, 0, 0.03);
+            width: 256px;
+            border-radius: 20px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            white-space: initial;
+            text-align: initial;
+            @include animStyle(opacity 0.3s);
+
+            @include mediaTo($size1366) {
+                right: -30px;
+            }
+
+            @include mediaTo($size960) {
+                right: -10px;
+            }
+
+            @include mediaTo($size480) {
+                right: -10px;
+            }
+
+            &:after {
+                display: block;
+                content: "";
+                position: absolute;
+                left: 85%;
+                margin-left: -15px;
+                bottom: -10px;
+                width: 17px;
+                height: 11px;
+                border-style: solid;
+                border-width: 9px 9px 0;
+                border-color: $white transparent;
+                z-index: 9;
+
+                @include mediaTo($size1366) {
+                    left: 85%;
+                }
+
+                @include mediaTo($size960) {
+                    left: 93%;
+                }
+
+                @include mediaTo($size480) {
+                    left: 93%;
+                }
+            }
+        }
+
+        .icon_info_calc {
+            position: relative;
+            z-index: 1;
+            background: none;
+            color: $siteColor;
+            border: none;
+            font-size: 20px;
+            line-height: 1.4em;
+        }
+
+
+        .icon_close {
+            background: none;
+            border: none;
+            color: $gray99;
+            font-size: 14px;
+            line-height: 1.4em;
+            position: absolute;
+            top: 16px;
+            right: 13px;
+        }
+
+        .text_tooltip {
+            font-size: 13px;
+            line-height: 1.4em;
+            color: $black33;
+            padding: 8px 25px 0 0;
+        }
+    }
+
+
+
+    .app_inner {
+        @include standardRowList;
+        align-items: center;
+        padding-bottom: 73px;
+
+        @include mediaTo($size960) {
+            justify-content: space-between;
+        }
+
+        @include mediaTo($size768) {
+            justify-content: center;
+        }
+    }
+
+    .app_left {
+        @include gridPadding;
+        // @include standardCol(5);
+        margin-left: auto;
+        .page_row {
+            justify-content: center
+        }
+    }
+
+    .app_right {
+        @include gridPadding;
+        @include standardCol(5);
+        // &:before{
+        //     content: "";
+        //     background: $siteColor;
+        //     position: absolute;
+        //     height: 670px;
+        //     right: 0;
+        //     border-radius: 100% 0 0;
+        //     z-index: -1;
+        //     width: 580px;
+        // }
+
+        // &:after{
+        //     content: "";
+        //     background: $secondColor;
+        //     position: absolute;
+        //     height: 100%;
+        //     right: -60px;
+        //     border-radius: 55%;
+        //     z-index: -1;
+        //     width: 537px;
+        //     bottom: -62%;
+        // }
+    }
+
+    .app_form {
+     //   @include gridPadding;
+        display: block;
+    }
+
+    .img_mobile {
+        flex: 1;
+        max-width: 301px;
+        position: relative;
+        margin-top: 40px;
+        padding-top: 63px;
+
+        @include mediaTo($size960) {
+            width: 100%;
+            max-width: unset;
+            margin-top: 0;
+        }
+
+        img {
+            display: block;
+            height: auto;
+            width: auto;
+            max-width: 370px;
+
+            @include mediaTo($size960) {
+                width: 100%;
+                max-width: unset;
+            }
+        }
+    }
+
+    .app_description {
+        @include standardText;
+        color: $black33;
+        margin: 10px 0 40px;
+    }
+
+    @include mediaTo($size960) {
+        .app_left {
+            margin-left: 0
+        }
+    }
+
+    @include mediaTo($size768) {
+        .app_left {
+            @include colSize(12);
+            padding-top: 40px;
+        }
+    }
+
+}
+
+.tooltip_open {
+    .tooltip_block .tooltip_info {
+        opacity: 1;
+    }
+}
+
+.web .calc_section {
+
+    .tooltip_block .icon_close,
+    .options_list button {
+        @include siteColorHover;
+    }
+
+    .switch_btn .slider.round {
+        @include opacityHover;
+    }
+
+    .tooltip_block .icon_info_calc,
+    .type_btns button,
+    .calc_footer .see_btn {
+        @include standardHover;
+    }
+
+    .download_btn {
+        @include btnLightHover;
+    }
+}
+
+.touch .calc_section {
+
+    .tooltip_block .icon_close,
+    .options_list button {
+        @include siteColorActive;
+    }
+
+    .switch_btn .slider.round {
+        @include opacityActive;
+    }
+
+    .tooltip_block .icon_info_calc,
+    .type_btns button,
+    .calc_footer .see_btn {
+        @include standardActive;
+    }
+
+    .download_btn {
+        @include btnLightActive;
+    }
+}
+
+.single-thumb {
+    // margin-top: -4px;
+}
